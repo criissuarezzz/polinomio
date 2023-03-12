@@ -135,6 +135,13 @@ class Polinomio(object):
                 actual = actual.sig
         return pol3, pol4
     
+    def existe_termino(pol, termino):
+        """Verifica si existe un termino en el polinomio"""
+        actual = pol.termino_mayor
+        while (actual is not None and actual.info.termino != termino):
+            actual = actual.sig
+        return actual is not None
+    
 #ejemplos
 p1=Polinomio()
 p1.agregar_termino(2,-4)  #-4x^2
@@ -163,3 +170,7 @@ p6,p7=p1.dividir_polinomios(p2) # Divide los polinomios p1 y p2
 p6.mostrar_polinomio() # Muestra el polinomio p6    
 p7.mostrar_polinomio() # Muestra el polinomio p7
 
+p1.eliminar_termino(4) # Elimina el término 2x^4
+print(p1.mostrar_polinomio()) # Muestra el polinomio en forma legible
+
+print(p2.existe_termino(4)) # Devuelve True si existe el término 2x^4
