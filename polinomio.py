@@ -57,13 +57,18 @@ class Polinomio(object):
                 if (actual.sig is not None):
                     actual.sig = actual.sig.sig
     
-    def mostrar_polinomio(pol):
+    def mostrar_polinomio(polinomio):
         """Muestra el polinomio"""
-        actual = pol.termino_mayor
-        while (actual is not None):
-            print(actual.info.valor, "x^", actual.info.termino, " + ", end="")
-            actual = actual.sig
-        print("0")
+        aux = polinomio.termino_mayor
+        pol = ""
+        if (aux is not None):
+            while (aux is not None):
+                signo = ""
+                if aux.info.valor >= 0:
+                    signo += "+"
+                pol += signo + str(aux.info.valor) + "x^" + str(aux.info.termino)
+                aux = aux.sig
+        return pol
 
     def evaluar_polinomio(pol, x):
         """Evalua el polinomio en x"""
@@ -135,11 +140,13 @@ p1=Polinomio()
 p1.agregar_termino(2,-4)  #-4x^2
 p1.agregar_termino(3,2)   #2x^3
 
+
 p2=Polinomio()
 p2.agregar_termino(3,4)   #4x^3
 p2.agregar_termino(6,1)   #x^6
 
-
+print(p1.mostrar_polinomio()) # Muestra el polinomio p1
+print(p2.mostrar_polinomio()) # Muestra el polinomio p2
 print(p1.evaluar_polinomio(4)) # Evalua el polinomio en x=4
 print(p2.evaluar_polinomio(4))  # Evalua el polinomio en x=4
 
