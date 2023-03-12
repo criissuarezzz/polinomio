@@ -21,4 +21,10 @@ def menu():
 
         opcion = input("Seleccione una opción: ")
 
-        
+        if opcion==1:
+            helpers.limpiar_pantalla()
+            print("Has elegido sumar polinomios")
+            print("¿Qué polinomios quieres sumar?")
+            
+
+            
